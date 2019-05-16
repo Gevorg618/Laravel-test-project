@@ -25,12 +25,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('home');
+    }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function user()
+    {
         if (Auth::user()->isAdmin()){
             $roles = Role::all();
 
             return view('admin', compact('roles'));
         }
-        return view('home');
+
     }
 }

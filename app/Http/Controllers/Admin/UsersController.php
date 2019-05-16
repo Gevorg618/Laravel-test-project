@@ -21,6 +21,7 @@ class UsersController extends Controller
     }
 
 
+
     /**
      * Show Users home.blade.php
      * @return \Illuminate\Http\JsonResponse
