@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Contracts\Admin\UsersInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -26,7 +27,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = $this->userRepo->getAllUsers();
+        $users = $this->userRepo->getAllUsers(Auth::id());
         return response()->json($users);
     }
 

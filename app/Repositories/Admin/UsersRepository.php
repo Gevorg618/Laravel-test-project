@@ -24,9 +24,9 @@ class UsersRepository implements UsersInterface
      * Get all Users
      * @return User[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function getAllUsers()
+    public function getAllUsers($adminId)
     {
-        return $this->model->all();
+        return $this->model->whereNotIn('id', [$adminId])->get();
     }
 
     /**

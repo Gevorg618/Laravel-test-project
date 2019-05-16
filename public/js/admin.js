@@ -86,6 +86,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (response.success) {
+                    index()
                     toastr.success(response.message)
                 } else {
                     toastr.error('error')
@@ -107,6 +108,7 @@ $(document).ready(function () {
 
             success: function (response) {
                 if (response.success) {
+                    index()
                     toastr.success(response.message)
                 } else {
                     toastr.success('User Created')
@@ -114,6 +116,7 @@ $(document).ready(function () {
             }
         })
     }
+
 
     function del(id) {
 

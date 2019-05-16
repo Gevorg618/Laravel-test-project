@@ -7,7 +7,7 @@ namespace App\Contracts\Admin;
 interface UsersInterface
 
 {
-    public function getAllUsers();
+    public function getAllUsers($adminId);
 
 
     /**
