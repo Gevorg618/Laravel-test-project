@@ -64,7 +64,6 @@
                     </div>
                 </div>
             </div>
-
     </div>
     <div class="modal fade" id="exampleModalCenter-create" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -89,7 +88,7 @@
             </div>
         </div>
     </div>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
 @endsection

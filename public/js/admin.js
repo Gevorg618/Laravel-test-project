@@ -43,7 +43,27 @@ $(document).ready(function () {
 
     $(document).on('click', '.delete', function () {
         var id = $(this).attr("data-user-id");
-        del(id)
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+
+            .then((willDelete) => {
+                if (willDelete) {
+                    del(id)
+                    swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+
+                    });
+                } else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+
     })
 
 
@@ -89,7 +109,7 @@ $(document).ready(function () {
                     index()
                     toastr.success(response.message)
                 } else {
-                    toastr.error('error')
+                    toastr.error(response.message)
                 }
             }
         })
@@ -111,12 +131,11 @@ $(document).ready(function () {
                     index()
                     toastr.success(response.message)
                 } else {
-                    toastr.success('User Created')
+                    toastr.error('error')
                 }
             }
         })
     }
-
 
     function del(id) {
 
