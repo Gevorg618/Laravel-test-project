@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 @section('content')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -6,19 +6,17 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard</div>
+            <div class="col-md-12">
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <table class="table">
+                        <table class="table shadow-lg p-3 mb-5 bg-white rounded">
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Id</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Edit</th>
@@ -64,7 +62,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+
     </div>
     <div class="modal fade" id="exampleModalCenter-create" tabindex="-1" role="dialog"
          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

@@ -85,7 +85,6 @@ $(document).ready(function () {
                 } else {
                     toastr.error('error')
                 }
-                console.log(response);
             }
         })
 
@@ -106,15 +105,15 @@ $(document).ready(function () {
                 } else {
                     toastr.success('User Created')
                 }
-                console.log(response);
             }
         })
     }
 
     function del(id) {
         $.ajax({
-            url: '/admin/users/delete',
+            url: '/admin/users/delete' ,
             method: 'post',
+
             data: {
                 userId: id,
             },
@@ -124,7 +123,6 @@ $(document).ready(function () {
                 } else {
                     toastr.error('error')
                 }
-                console.log(response);
             }
         })
     }

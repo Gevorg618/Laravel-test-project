@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Contracts\Admin\UsersRepository;
+use App\Contracts\Admin\UsersInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,9 +12,9 @@ class UsersController extends Controller
 
     /**
      * UsersController constructor.
-     * @param UsersRepository $userRepo
+     * @param UsersInterface $userRepo
      */
-    public function __construct(UsersRepository $userRepo)
+    public function __construct(UsersInterface $userRepo)
     {
         $this->userRepo = $userRepo;
     }
@@ -32,7 +32,7 @@ class UsersController extends Controller
 
     /**
      * Create User.
-     * @param $data
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
@@ -41,7 +41,7 @@ class UsersController extends Controller
         try {
             $user = $this->userRepo->create($data);
             return response()->json([
-                'success' => 0,
+                'success' => 1,
                 'message' => 'You successfully created user '.$user->name.'.',
             ]);
         } catch (\Exception $exception) {
@@ -88,7 +88,7 @@ class UsersController extends Controller
         try {
             $this->userRepo->delete($request->userId);
             return response()->json([
-                'success' => 0,
+                'success' => 1,
                 'message' => 'You successfully delete user.',
             ]);
         } catch (\Exception $exception) {
