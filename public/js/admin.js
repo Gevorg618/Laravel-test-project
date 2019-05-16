@@ -25,6 +25,7 @@ $(document).ready(function () {
         var roleId = $('#userRoles').find(":selected").val()
 
         update(userId, data, roleId)
+        $('#exampleModal').modal('hide')
     });
 
     $('.create').on('click', function () {
@@ -32,8 +33,9 @@ $(document).ready(function () {
             'name': $('#username').val(),
             'email': $('#useremail').val(),
             'passwrod': $('#userpassword').val()
-        };
 
+        };
+        $('.create').modal('hide')
 
         created(data)
 
@@ -50,8 +52,10 @@ $(document).ready(function () {
             url: '/admin/users',
             method: 'get',
             success: function (users) {
+                $('#usersTable').empty()
                 users.forEach(function (user, index) {
                     allUsers = users
+
                     $('#usersTable').append('' +
                         '<tr>\n' +
                         '  <th scope="row">' + user.id + '</th>\n' +
@@ -62,6 +66,7 @@ $(document).ready(function () {
                         '  <td><button class="btn btn-danger delete"  data-user-id="' + user.id + '">Delete</button></td>\n' +
                         '</tr>'
                     )
+
 
                 })
             }
@@ -89,7 +94,8 @@ $(document).ready(function () {
         })
 
     }
-    function  created(data) {
+
+    function created(data) {
         $.ajax({
             url: '/admin/users/store',
             method: 'post',
@@ -110,8 +116,9 @@ $(document).ready(function () {
     }
 
     function del(id) {
+
         $.ajax({
-            url: '/admin/users/delete' ,
+            url: '/admin/users/delete',
             method: 'post',
 
             data: {
@@ -119,6 +126,8 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (response.success) {
+
+                    index()
                     toastr.success(response.message)
                 } else {
                     toastr.error('error')
